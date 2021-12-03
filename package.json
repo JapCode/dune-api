@@ -1,0 +1,27 @@
+{
+  "name": "dune-api",
+  "version": "1.0.0",
+  "description": "api for dune",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "register": "node lib/initialUser.js"
+  },
+  "author": "Alonso Paredes",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "8.2.0",
+    "prettier": "2.4.1"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "inquirer": "^8.2.0",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^2.3.10",
+    "mongoose": "6.0.12"
+  }
+}
