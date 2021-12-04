@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const routerApi = require('./routers/index');
@@ -13,6 +14,7 @@ const {
   logErrors,
 } = require('./middleware/handlerErrorBoom');
 
+app.use(cors());
 createRoles();
 app.use(methodOverride());
 
