@@ -29,13 +29,12 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((res) => {
-    res.status(200).send('Connected to MongoDB');
-    // console.log('Connected to MongoDB');
+  .then(() => {
+    console.log('Connected to MongoDB');
   })
-  .catch((res) => {
-    // console.log(err);
-    res.status(500).send('Error connecting to MongoDB');
+  .catch((err) => {
+    // console.log(res, err);
+    throw err;
   });
 
 app.listen(PORT);
