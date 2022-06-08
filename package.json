@@ -4,18 +4,29 @@
   "description": "api for dune",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "register": "node lib/initialUser.js"
+    "start": "NODE_ENV=production node src/index.js",
+    "start:dev": "NODE_ENV=development nodemon src/index.js",
+    "register": "node lib/initialUser.js",
+    "test": "NODE_ENV=test jest --detectOpenHandles",
+    "test:watch": "npm run test -- --watch",
+    "test:unit": "NODE_ENV=test jest unit --detectOpenHandles",
+    "test:int": "NODE_ENV=test jest int --detectOpenHandles",
+    "test:e2e": "NODE_ENV=test jest --config src/e2e/jest-e2e.json --forceExit",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix"
   },
   "author": "Alonso Paredes",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
     "eslint": "8.2.0",
+    "jest": "^28.1.0",
+    "mockingoose": "^2.15.2",
     "prettier": "2.4.1"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
+    "@shelf/jest-mongodb": "^2.2.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -24,6 +35,8 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^2.3.10",
-    "mongoose": "6.0.12"
+    "mongoose": "6.0.12",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   }
 }

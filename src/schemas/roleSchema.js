@@ -10,14 +10,13 @@ const roleSchema = new Schema(
   },
 );
 
-roleSchema.set('toJSON', {
-  transform: (document, returnedObjet) => {
-    returnedObjet.id = returnedObjet._id;
-    delete returnedObjet._id;
-    delete returnedObjet.__v;
-  },
-});
+// roleSchema.set('toJSON', {
+//   transform: (document, returnedObjet) => {
+//     returnedObjet.id = returnedObjet._id;
+//     delete returnedObjet._id;
+//     delete returnedObjet.__v;
+//   },
+// });
 
 const Role = mongoose.model('Role', roleSchema);
-
 module.exports = Role;
