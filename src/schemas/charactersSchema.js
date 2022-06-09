@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const charactersSchema = new Schema({
   name: { type: String, unique: true, required: true },
@@ -17,13 +18,15 @@ const charactersSchema = new Schema({
   // },
 });
 
-charactersSchema.set('toJSON', {
-  transform: (document, returnedObjet) => {
-    returnedObjet.id = returnedObjet._id;
-    delete returnedObjet._id;
-    delete returnedObjet.__v;
-  },
-});
+charactersSchema
+  .set('toJSON', {
+    transform: (document, returnedObjet) => {
+      returnedObjet.id = returnedObjet._id;
+      delete returnedObjet._id;
+      delete returnedObjet.__v;
+    },
+  })
+  .plugin(mongoosePaginate);
 
 const Character = mongoose.model('Character', charactersSchema);
 

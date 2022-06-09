@@ -9,7 +9,7 @@ const characterService = new CharacterService(Character);
 
 router.get('/', async (req, res, next) => {
   try {
-    const characters = await characterService.getCharacters({});
+    const characters = await characterService.getCharacters(req.query);
     res.status(200).json(characters);
   } catch (err) {
     next(err);

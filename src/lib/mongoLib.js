@@ -2,8 +2,19 @@ class MongoLib {
   constructor(collection) {
     this.collection = collection;
   }
-  async getAll() {
-    return this.collection.find({});
+  async getAll(query) {
+    const limit = parseInt(query.limit) || 10;
+    const page = parseInt(query.page) || 1;
+    return this.collection.paginate(
+      {},
+      {
+        limit,
+        page,
+        customLabels: {
+          docs: 'CharactersList',
+        },
+      },
+    );
   }
 
   async getSingle(id) {
